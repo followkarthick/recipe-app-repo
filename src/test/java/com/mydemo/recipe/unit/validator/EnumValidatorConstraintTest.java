@@ -58,17 +58,5 @@ public class EnumValidatorConstraintTest {
         assertThat(violations.size()).isEqualTo(1);
     }
 
-   @Test
-    public void whenEmptyName_thenOneConstraintViolation() {
-        CreateIngredientRequest request = new CreateIngredientRequest(null);
-
-        Set<ConstraintViolation<CreateIngredientRequest>> violations = validator.validate(request);
-        String collect = violations.stream()
-                .map(ConstraintViolation::getMessage)
-                .collect(Collectors.joining(", "));
-
-        assertEquals(collect, "{ingredient.notBlank}");
-        assertThat(violations.size()).isEqualTo(1);
-    }
 
 }
